@@ -7,4 +7,11 @@
   </parent>
   <groupId>com.mall.parking.charging</groupId>
   <artifactId>parking-charging</artifactId>
+  <dependencies>
+  	<dependency>
+  		<groupId>com.mall.parking.common</groupId>
+  		<artifactId>parking-common</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
+  </dependencies>
 </project>

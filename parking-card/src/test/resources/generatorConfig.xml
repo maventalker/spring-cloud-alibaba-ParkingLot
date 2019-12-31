@@ -8,7 +8,7 @@
 
   <context id="mysqlTables" targetRuntime="MyBatis3">
     <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://localhost:3306/park_member?useUnicode=true" userId="root"
+                        connectionURL="jdbc:mysql://localhost:3306/park_card?useUnicode=true" userId="root"
                         password="root">
                         <property name="useInformationSchema" value="true"/>
     </jdbcConnection>
@@ -17,25 +17,25 @@
       <property name="forceBigDecimals" value="false" />
     </javaTypeResolver>
 
-    <javaModelGenerator targetPackage="com.mall.parking.member.entity" targetProject="src/test/java">
+    <javaModelGenerator targetPackage="com.mall.parking.card.entity" targetProject="src/test/java">
       <property name="enableSubPackages" value="true" />
       <property name="trimStrings" value="true" />
     </javaModelGenerator>
     <sqlMapGenerator targetPackage="mybatis.mapper"  targetProject="src/test/resources">
       <property name="enableSubPackages" value="true" />
     </sqlMapGenerator>
-    <javaClientGenerator type="XMLMAPPER" targetPackage="com.mall.parking.member.mapper"  targetProject="src/test/java">
+    <javaClientGenerator type="XMLMAPPER" targetPackage="com.mall.parking.card.mapper"  targetProject="src/test/java">
       <property name="enableSubPackages" value="true" />
     </javaClientGenerator>
     
-     <!-- <table tableName="member" domainObjectName="Member">
-    	<generatedKey column="id" sqlStatement="SELECT REPLACE(UUID(), '-', '')"/>
-    </table> -->
-    <table tableName="vehicle" domainObjectName="Vehicle">
+     <table tableName="member_card" domainObjectName="MemberCard">
     	<generatedKey column="id" sqlStatement="SELECT REPLACE(UUID(), '-', '')"/>
     </table>
-    <!-- <table tableName="month_card" domainObjectName="MonthCard">
+    <table tableName="exchange" domainObjectName="Exchange">
     	<generatedKey column="id" sqlStatement="SELECT REPLACE(UUID(), '-', '')"/>
-    </table> -->
+    </table>
+    <table tableName="member_sign" domainObjectName="MemberSign">
+    	<generatedKey column="id" sqlStatement="SELECT REPLACE(UUID(), '-', '')"/>
+    </table>
   </context>
 </generatorConfiguration>
