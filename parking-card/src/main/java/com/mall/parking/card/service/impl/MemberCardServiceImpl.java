@@ -26,7 +26,14 @@ public class MemberCardServiceImpl implements MemberCardService {
 	@Override
 	public int addMemberCard(String json) throws BusinessException {
 		MemberCard card = JSONObject.parseObject(json,MemberCard.class);
-		log.debug("");
+		log.info("add member card " +json);
 		return cardMapper.insertSelective(card);
+	}
+
+	@Override
+	public int updateMemberCard(String json) throws BusinessException {
+		MemberCard card = JSONObject.parseObject(json,MemberCard.class);
+		log.info("update member card = " +json);
+		return cardMapper.updateByPrimaryKeySelective(card);
 	}
 }

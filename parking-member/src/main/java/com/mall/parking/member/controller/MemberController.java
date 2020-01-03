@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.mall.parking.common.bean.CommonResult;
 import com.mall.parking.common.exception.BusinessException;
+import com.mall.parking.member.client.MemberCardClient;
 import com.mall.parking.member.entity.Member;
 import com.mall.parking.member.service.MemberService;
 
@@ -25,6 +26,9 @@ public class MemberController {
 
 	@Autowired
 	MemberService memberService;
+	
+	@Autowired
+	MemberCardClient memberCardClient;
 
 	/**
 	 * @return
@@ -39,14 +43,14 @@ public class MemberController {
 
 	/**
 	 * bind user mobile
-	 * 
+	 * {"birth":"2009-02-03","fullName":"tomsoon","phone":"13312345678"}
 	 * @param json
 	 * @return
 	 */
 	@RequestMapping(value = "/bindMobile", method = RequestMethod.POST)
 	public CommonResult<Integer> bindMobile(String json) throws BusinessException{
 		CommonResult<Integer> result = new CommonResult<>();
-		log.debug("bind mobile param = " + json);
+		log.info("bind mobile param = " + json);
 		int rtn = memberService.bindMobile(json);
 		result.setRespData(rtn);
 		return result;

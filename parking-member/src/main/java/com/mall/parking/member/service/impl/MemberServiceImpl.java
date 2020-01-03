@@ -6,21 +6,29 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSONObject;
+import com.mall.parking.common.entity.MemberCard;
 import com.mall.parking.common.exception.BusinessException;
+import com.mall.parking.member.client.MemberCardClient;
 import com.mall.parking.member.entity.Member;
 import com.mall.parking.member.entity.MemberExample;
 import com.mall.parking.member.mapper.MemberMapper;
 import com.mall.parking.member.service.MemberService;
+
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author 公众号：歪脖贰点零 , See more at : https://xiaozhuanlan.com/msa-practice
  *
  */
 @Service
+@Slf4j
 public class MemberServiceImpl implements MemberService {
 
 	@Autowired
 	MemberMapper memberMapper;
+	
+	@Autowired
+	MemberCardClient memberCardClient;
 
 	@Override
 	public List<Member> list() throws BusinessException{
@@ -32,8 +40,18 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public int bindMobile(String json) throws BusinessException{
 		Member member = JSONObject.parseObject(json, Member.class);
-
-		return memberMapper.insertSelective(member);
+		int rtn = memberMapper.insertSelective(member);
+		
+		//invoke another service
+		if (rtn > 0) {
+			MemberCard card = new MemberCard();
+			card.setMemberId(member.getId());
+			card.setCurQty("50");
+			memberCardClient.addCard(JSONObject.toJSONString(card));
+			log.info("creata member card suc!");
+		}
+		
+		return rtn;
 	}
 
 	@Override
@@ -41,4 +59,12 @@ public class MemberServiceImpl implements MemberService {
 		return memberMapper.selectByPrimaryKey(memberId);
 	}
 
+	
+	public static void main(String[] args) {
+		Member member = new Member();
+		member.setBirth("2009-02-03");
+		member.setFullName("tomsoon");
+		member.setPhone("13312345678");
+		log.info(JSONObject.toJSONString(member));
+	}
 }

@@ -22,13 +22,22 @@ public class MemberCardController {
 
 	@Autowired
 	MemberCardService cardService;
-	
-	
-	@RequestMapping(value = "/addCard",method = RequestMethod.POST)
+
+	@RequestMapping(value = "/addCard", method = RequestMethod.POST)
 	public CommonResult<Integer> addCard(String json) throws BusinessException {
-		log.debug(" begin add member card = " +json);
+		log.info("eclise service example: begin add member card = " + json);
+		//log.info("jar service example: begin add member card = " + json);
 		CommonResult<Integer> result = new CommonResult<>();
 		int rtn = cardService.addMemberCard(json);
+		result.setRespData(rtn);
+		return result;
+	}
+
+	@RequestMapping(value = "/updateCard", method = RequestMethod.POST)
+	public CommonResult<Integer> updateCard(String json) throws BusinessException {
+		log.info(" begin add member card = " + json);
+		CommonResult<Integer> result = new CommonResult<>();
+		int rtn = cardService.updateMemberCard(json);
 		result.setRespData(rtn);
 		return result;
 	}

@@ -10,4 +10,6 @@ public interface MemberCardService {
 
 	int addMemberCard(String json) throws BusinessException;
 
+	int updateMemberCard(String json) throws BusinessException;
+
 }
