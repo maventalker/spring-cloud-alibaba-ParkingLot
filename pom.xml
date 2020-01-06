@@ -27,6 +27,7 @@
 		<swagger.version>2.6.1</swagger.version>
 
 		<nacos-config-spring-boot.version>0.2.1</nacos-config-spring-boot.version>
+		<mybatis.starter.version>2.1.1</mybatis.starter.version>
 	</properties>
 
 	<dependencyManagement>
@@ -82,6 +83,13 @@
 				<groupId>com.alibaba.boot</groupId>
 				<artifactId>nacos-config-spring-boot-actuator</artifactId>
 				<version>${nacos-config-spring-boot.version}</version>
+			</dependency>
+
+			<!-- mybatis -->
+			<dependency>
+				<groupId>org.mybatis.spring.boot</groupId>
+				<artifactId>mybatis-spring-boot-starter</artifactId>
+				<version>${mybatis.starter.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>

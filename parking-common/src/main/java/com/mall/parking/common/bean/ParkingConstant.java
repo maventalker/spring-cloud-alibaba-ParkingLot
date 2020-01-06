@@ -40,8 +40,10 @@ public class ParkingConstant {
 	}
 
 	public static final class cache {
-		
+
 		public static final String chargingRule = "ruleKey";
+
+		public static final String currentAviableStallAmt = "currentAviableStallAmtKey";
 	}
 
 }
