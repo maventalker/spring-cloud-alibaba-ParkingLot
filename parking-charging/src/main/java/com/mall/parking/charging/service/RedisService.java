@@ -6,4 +6,7 @@ public interface RedisService {
 
 	void cacheObject(String chargingrule, String jsonString);
 
+	Object getkey(String key);
+
+	void decrease(String currentaviablestallamt);
 }

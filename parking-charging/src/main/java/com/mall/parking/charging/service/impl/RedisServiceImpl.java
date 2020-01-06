@@ -32,4 +32,14 @@ public class RedisServiceImpl implements RedisService {
 		log.info("chargingrule cached!");
 	}
 
+	@Override
+	public Object getkey(String key) {
+		return redisTemplate.opsForValue().get(key);
+	}
+
+	@Override
+	public void decrease(String currentaviablestallamt) {
+		redisTemplate.opsForValue().decrement(currentaviablestallamt);
+	}
+
 }

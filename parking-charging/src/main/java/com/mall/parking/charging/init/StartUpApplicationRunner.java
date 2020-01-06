@@ -35,5 +35,4 @@ public class StartUpApplicationRunner implements ApplicationRunner {
 			redisService.cacheObject(ParkingConstant.cache.chargingRule, JSONObject.toJSONString(rules));
 		}
 	}
-
 }
