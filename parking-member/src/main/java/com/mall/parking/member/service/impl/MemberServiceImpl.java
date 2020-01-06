@@ -3,6 +3,9 @@ package com.mall.parking.member.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSONObject;
@@ -22,6 +25,8 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Service
 @Slf4j
+@Component
+@RefreshScope
 public class MemberServiceImpl implements MemberService {
 
 	@Autowired
@@ -29,6 +34,12 @@ public class MemberServiceImpl implements MemberService {
 	
 	@Autowired
 	MemberCardClient memberCardClient;
+	
+	@Value("${onoff_bindmobile}")
+	private boolean onoffBindmobile;
+	
+	@Value("${on_bindmobile_mulriple}")
+	private int onBindmobileMulriple;
 
 	@Override
 	public List<Member> list() throws BusinessException{
@@ -46,7 +57,14 @@ public class MemberServiceImpl implements MemberService {
 		if (rtn > 0) {
 			MemberCard card = new MemberCard();
 			card.setMemberId(member.getId());
-			card.setCurQty("50");
+			if (onoffBindmobile) {
+				//special logic
+				card.setCurQty("" +50 * onBindmobileMulriple);
+			}else {
+				//normal logic
+				card.setCurQty("50");
+			}
+			
 			memberCardClient.addCard(JSONObject.toJSONString(card));
 			log.info("creata member card suc!");
 		}

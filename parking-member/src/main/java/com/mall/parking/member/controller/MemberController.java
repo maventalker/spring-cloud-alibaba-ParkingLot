@@ -3,6 +3,7 @@ package com.mall.parking.member.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,6 +23,7 @@ import lombok.extern.slf4j.Slf4j;
 @RestController
 @RequestMapping("member")
 @Slf4j
+@RefreshScope
 public class MemberController {
 
 	@Autowired
@@ -29,6 +31,19 @@ public class MemberController {
 	
 	@Autowired
 	MemberCardClient memberCardClient;
+	
+//	@Value("${onoff_bindmobile}")
+//	private boolean onoffBindmobile;
+//	
+//	@Value("${on_bindmobile_mulriple}")
+//	private int onBindmobileMulriple;
+//	
+//	@PostMapping("/getFlag")
+//	public CommonResult<Boolean> getFlag(){
+//		CommonResult<Boolean> result = new CommonResult<>();
+//		result.setRespData(onoffBindmobile);
+//		return result;
+//	}
 
 	/**
 	 * @return

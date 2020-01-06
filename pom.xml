@@ -25,6 +25,8 @@
 		<spring-cloud-alibaba.version>2.1.0.RELEASE</spring-cloud-alibaba.version>
 		<fastjson.version>1.2.62</fastjson.version>
 		<swagger.version>2.6.1</swagger.version>
+
+		<nacos-config-spring-boot.version>0.2.1</nacos-config-spring-boot.version>
 	</properties>
 
 	<dependencyManagement>
@@ -67,6 +69,19 @@
 				<groupId>io.springfox</groupId>
 				<artifactId>springfox-swagger-ui</artifactId>
 				<version>${swagger.version}</version>
+			</dependency>
+
+			<!-- nacos -->
+			<dependency>
+				<groupId>com.alibaba.boot</groupId>
+				<artifactId>nacos-config-spring-boot-starter</artifactId>
+				<version>${nacos-config-spring-boot.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.alibaba.boot</groupId>
+				<artifactId>nacos-config-spring-boot-actuator</artifactId>
+				<version>${nacos-config-spring-boot.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>

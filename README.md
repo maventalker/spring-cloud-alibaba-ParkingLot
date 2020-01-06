@@ -6,11 +6,12 @@
 2. 分布式配置——nacos
 3. 分布式锁——redission
 4. 分布式事务——seata
-5. 接口限流. 熔断. 降级——sentinel
+5. 接口限流. 熔断. 降级——sentinel/hystrix
 6. 统一网关——spring-cloud-gateway
 7. 代码简化——lombok,mybatis-generator,mybatis-plus
 8. 异步消息处理——rocketmq
 9. 分布式缓存——redis
+10. 客户端负载均衡——openFeign
 
 ---
 

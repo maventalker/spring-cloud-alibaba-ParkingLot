@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+  <classPathEntry location="/Users/apple/.m2/repository/mysql/mysql-connector-java/5.1.42/mysql-connector-java-5.1.42.jar" />
+
+  <context id="mysqlTables" targetRuntime="MyBatis3">
+    <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/park_charge?useUnicode=true" userId="root"
+                        password="root">
+                        <property name="useInformationSchema" value="true"/>
+    </jdbcConnection>
+
+    <javaTypeResolver >
+      <property name="forceBigDecimals" value="false" />
+    </javaTypeResolver>
+
+    <javaModelGenerator targetPackage="com.mall.parking.member.entity" targetProject="src/test/java">
+      <property name="enableSubPackages" value="true" />
+      <property name="trimStrings" value="true" />
+    </javaModelGenerator>
+    <sqlMapGenerator targetPackage="mybatis.mapper"  targetProject="src/test/resources">
+      <property name="enableSubPackages" value="true" />
+    </sqlMapGenerator>
+    <javaClientGenerator type="XMLMAPPER" targetPackage="com.mall.parking.member.mapper"  targetProject="src/test/java">
+      <property name="enableSubPackages" value="true" />
+    </javaClientGenerator>
+    
+     <table tableName="charging_rule" domainObjectName="ChargingRule">
+    	<generatedKey column="id" sqlStatement="SELECT REPLACE(UUID(), '-', '')"/>
+    </table>
+    <table tableName="entrance" domainObjectName="Entrance">
+    	<generatedKey column="id" sqlStatement="SELECT REPLACE(UUID(), '-', '')"/>
+    </table>
+    <table tableName="exists" domainObjectName="Exists">
+    	<generatedKey column="id" sqlStatement="SELECT REPLACE(UUID(), '-', '')"/>
+    </table>
+  </context>
+</generatorConfiguration>
