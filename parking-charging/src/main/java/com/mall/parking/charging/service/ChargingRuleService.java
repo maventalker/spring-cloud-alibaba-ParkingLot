@@ -12,4 +12,6 @@ import com.mall.parking.common.exception.BusinessException;
 public interface ChargingRuleService {
 
 	List<ChargingRule> list() throws BusinessException;
+
+	int refresh();
 }

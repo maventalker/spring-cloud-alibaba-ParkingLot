@@ -1,3 +1,3 @@
 spring: 
   application: 
-    name: parking-charging
+    name: charging-service

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.mall.parking.charging.entity.ChargingRule;
 import com.mall.parking.charging.service.ChargingRuleService;
+import com.mall.parking.common.bean.CommonResult;
 import com.mall.parking.common.exception.BusinessException;
 
 /**
@@ -25,5 +26,19 @@ public class ChargingRuleController {
 	@PostMapping("/list")
 	public List<ChargingRule> list() throws BusinessException{
 		return chargingRuleService.list();
+	}
+	
+	/**
+	 * when charging rule changed,use this method to refresh data to cache
+	 * 
+	 * @return
+	 * @throws BusinessException
+	 */
+	@PostMapping("/fresh")
+	public CommonResult<Integer> refresh() throws BusinessException{
+		CommonResult<Integer> result = new CommonResult<>();
+		int rtn = chargingRuleService.refresh();
+		result.setRespData(rtn);
+		return result;
 	}
 }
