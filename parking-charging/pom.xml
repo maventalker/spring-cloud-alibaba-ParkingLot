@@ -20,10 +20,13 @@
 			<groupId>com.alibaba.nacos</groupId>
 			<artifactId>nacos-client</artifactId>
 		</dependency>
-		<!-- <dependency>
+		<!-- rocketmq -->
+		<dependency>
 			<groupId>com.alibaba.cloud</groupId>
-			<artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
-		</dependency> -->
+			<artifactId>spring-cloud-starter-stream-rocketmq</artifactId>
+		</dependency>
+		<!-- <dependency> <groupId>com.alibaba.cloud</groupId> <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId> 
+			</dependency> -->
 		<!-- feign -->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
@@ -70,9 +73,9 @@
 		</dependency>
 		<!-- redis -->
 		<dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
-        </dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
+		</dependency>
 		<!--swagger2 -->
 		<dependency>
 			<groupId>io.springfox</groupId>
