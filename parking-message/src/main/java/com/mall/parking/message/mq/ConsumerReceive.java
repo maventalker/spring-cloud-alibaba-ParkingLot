@@ -1,4 +1,4 @@
-package com.mall.parking.message.service;
+package com.mall.parking.message.mq;
 
 import org.springframework.cloud.stream.annotation.StreamListener;
 import org.springframework.stereotype.Service;
@@ -20,4 +20,11 @@ public class ConsumerReceive {
 		log.info("Receive input msg = " +json +" by RocketMQ...");
 		
 	}
+	
+	
+//	@StreamListener(MessageSink.Input2)
+//	public void receiveInput2(String json) throws BusinessException{
+//		log.info("------>>>>>>>>>>>>>>Receive publish msg = " +json +" by RocketMQ...");
+//		
+//	}
 }
