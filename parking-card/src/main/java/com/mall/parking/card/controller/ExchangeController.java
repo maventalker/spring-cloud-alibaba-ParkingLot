@@ -22,11 +22,12 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class ExchangeController {
 
-	
 	@Autowired
 	ExchangeService exchangeService;
-	
+
 	/**
+	 * example : {"cardQty":100,"code":"v394","ctype":0}
+	 * 
 	 * @param json
 	 * @return
 	 * @throws BusinessException
@@ -39,13 +40,13 @@ public class ExchangeController {
 		result.setRespData(rtn);
 		return result;
 	}
-	
-//	public static void main(String[] args) {
-//		Exchange exchange = new Exchange();
-//		exchange.setCardQty(100);
-//		exchange.setCode("v394");
-//		exchange.setCtype(1);
-//		
-//		log.info(JSONObject.toJSONString(exchange));
-//	}
+
+	public static void main(String[] args) {
+		Exchange exchange = new Exchange();
+		exchange.setCardQty(100);
+		exchange.setCode("v394");
+		exchange.setCtype(1);
+
+		log.info(JSONObject.toJSONString(exchange));
+	}
 }

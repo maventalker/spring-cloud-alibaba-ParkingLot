@@ -44,6 +44,15 @@ public class ParkingConstant {
 		public static final String chargingRule = "ruleKey";
 
 		public static final String currentAviableStallAmt = "currentAviableStallAmtKey";
+		
+		public static final String grouponCodeAmtKey = "grouponCodeAmt";
+		
+		public static final int grouponCodeAmt = 10;
 	}
 
+	
+	public static final class lock {
+		public static final String exchangeCouponLock = "exchangeCouponLock";
+		
+	}
 }
