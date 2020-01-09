@@ -17,8 +17,7 @@ public class BillController {
 	BillService billService;
 
 	@PostMapping("/create")
-	public CommonResult<Integer> create(String json)
-	 throws BusinessException{
+	public CommonResult<Integer> create(String json) throws BusinessException {
 		CommonResult<Integer> result = new CommonResult<>();
 		int rtn = billService.create(json);
 		result.setRespData(rtn);

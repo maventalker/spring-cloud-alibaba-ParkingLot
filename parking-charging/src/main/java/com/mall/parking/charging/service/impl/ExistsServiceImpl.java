@@ -8,11 +8,15 @@ import java.util.List;
 
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.stream.messaging.Source;
+import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.mall.parking.charging.client.BillFeignClient;
+import com.mall.parking.charging.client.MessageClient;
 import com.mall.parking.charging.entity.ChargingRule;
 import com.mall.parking.charging.entity.Entrance;
 import com.mall.parking.charging.entity.EntranceExample;
@@ -22,10 +26,12 @@ import com.mall.parking.charging.mapper.ExistsMapper;
 import com.mall.parking.charging.service.ExistsService;
 import com.mall.parking.charging.service.RedisService;
 import com.mall.parking.common.bean.CommonResult;
+import com.mall.parking.common.bean.Message;
 import com.mall.parking.common.bean.ParkingConstant;
 import com.mall.parking.common.entity.Billing;
 import com.mall.parking.common.exception.BusinessException;
 
+import io.seata.spring.annotation.GlobalTransactional;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -37,7 +43,7 @@ import lombok.extern.slf4j.Slf4j;
 public class ExistsServiceImpl implements ExistsService {
 
 	@Autowired
-	ExistsMapper existsMapper;
+	ExistsMapper ExistsMapper;
 
 	@Autowired
 	EntranceMapper entranceMapper;
@@ -48,11 +54,20 @@ public class ExistsServiceImpl implements ExistsService {
 	@Autowired
 	BillFeignClient billFeignClient;
 
+	@Autowired
+	MessageClient messageClient;
+
+	@Autowired
+	Source source;
+
 	@Override
+	@Transactional(rollbackFor = Exception.class)
+	@GlobalTransactional
 	public int createExsits(String json) throws BusinessException {
-		log.info("exists data = " + json);
+		log.info("Exists data = " + json);
 		Exists exists = JSONObject.parseObject(json, Exists.class);
-		int rtn = existsMapper.insertSelective(exists);
+		int rtn = ExistsMapper.insertSelective(exists);
+		log.info("insert into park_charge.Exists data suc !");
 
 		// calu fee
 		EntranceExample entranceExample = new EntranceExample();
@@ -71,6 +86,7 @@ public class ExistsServiceImpl implements ExistsService {
 				LocalDateTime.now());
 		long mintues = duration.toMinutes();
 		float fee = caluateFee(mintues);
+		log.info("calu parking fee = " + fee);
 
 		// invoke thridPay service to pay the fee
 		Billing billing = new Billing();
@@ -78,13 +94,30 @@ public class ExistsServiceImpl implements ExistsService {
 		billing.setDuration(Float.valueOf(mintues));
 		billing.setPlateNo(exists.getPlateNo());
 		CommonResult<Integer> createRtn = billFeignClient.create(JSONObject.toJSONString(billing));
-		if (createRtn.getRespData() > 0) {
-			log.info("billing suc!");
+		if (createRtn.getRespCode() > 0) {
+			log.info("insert into billing suc!");
+		}else {
+			throw new BusinessException("invoke finance service fallback...");
 		}
 
 		// make event to invoke electric screen update
-
+		redisService.increase(ParkingConstant.cache.currentAviableStallAmt);
+		log.info("update parkingLot aviable stall amt = " +redisService.getkey(ParkingConstant.cache.currentAviableStallAmt));
 		// send user message
+		Message message = new Message();
+		message.setMcontent("this is simple message.");
+		message.setMtype("pay");
+		source.output().send(MessageBuilder.withPayload(JSONObject.toJSONString(message)).build());
+		log.info("produce msg to apache rocketmq , parking-messge to consume the msg as a consumer...");
+
+		// write message sended
+		CommonResult<Integer> msgRtn = messageClient.sendNotice(JSONObject.toJSONString(message));
+		if (msgRtn.getRespCode() > 0) {
+			log.info("insert into park_message.message data suc!");
+		}else {
+			throw new BusinessException("invoke message service fallback ...");
+		}
+		
 		return rtn;
 	}
 

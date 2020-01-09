@@ -10,8 +10,11 @@ import com.mall.parking.resource.entity.StallExample;
 import com.mall.parking.resource.mapper.StallMapper;
 import com.mall.parking.resource.service.RedisService;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Component
 @Order(1)
+@Slf4j
 public class StartUPCommandLineRunner implements CommandLineRunner{
 	
 	@Autowired
@@ -27,6 +30,8 @@ public class StartUPCommandLineRunner implements CommandLineRunner{
 			StallExample example = new StallExample();
 			long stalls = stallMapper.countByExample(example);
 			redisService.cacheObject(ParkingConstant.cache.currentAviableStallAmt, stalls+"");
+			log.info(ParkingConstant.cache.currentAviableStallAmt + " cached ... -------------->>>>><<<");
+			
 		}
 	}
 

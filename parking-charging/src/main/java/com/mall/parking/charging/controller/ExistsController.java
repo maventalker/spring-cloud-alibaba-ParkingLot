@@ -5,9 +5,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.alibaba.fastjson.JSONObject;
+import com.mall.parking.charging.entity.Exists;
 import com.mall.parking.charging.service.ExistsService;
 import com.mall.parking.common.bean.CommonResult;
 import com.mall.parking.common.exception.BusinessException;
+
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author 公众号：歪脖贰点零 , See more at : https://xiaozhuanlan.com/msa-practice
@@ -15,6 +19,7 @@ import com.mall.parking.common.exception.BusinessException;
  */
 @RequestMapping("exists")
 @RestController
+@Slf4j
 public class ExistsController {
 
 	@Autowired
@@ -26,5 +31,12 @@ public class ExistsController {
 		int rtn = existsService.createExsits(json);
 		commonResult.setRespData(rtn);
 		return commonResult;
+	}
+	
+	public static void main(String[] args) {
+		Exists Leave = new Exists();
+		Leave.setPlateNo("ddddd");
+		Leave.setBrakeId("2323");
+		log.info(JSONObject.toJSONString(Leave));
 	}
 }

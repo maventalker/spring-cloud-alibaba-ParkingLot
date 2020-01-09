@@ -41,5 +41,11 @@ public class RedisServiceImpl implements RedisService {
 	public void decrease(String currentaviablestallamt) {
 		redisTemplate.opsForValue().decrement(currentaviablestallamt);
 	}
+	
+	@Override
+	public void increase(String currentaviablestallamt) {
+		redisTemplate.opsForValue().increment(currentaviablestallamt);		
+	}
+
 
 }

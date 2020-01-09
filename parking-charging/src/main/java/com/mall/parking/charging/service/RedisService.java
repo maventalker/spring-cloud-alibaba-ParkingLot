@@ -9,4 +9,6 @@ public interface RedisService {
 	Object getkey(String key);
 
 	void decrease(String currentaviablestallamt);
+	
+	void increase(String currentaviablestallamt);
 }
