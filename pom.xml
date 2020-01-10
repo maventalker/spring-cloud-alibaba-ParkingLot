@@ -16,6 +16,7 @@
 		<module>parking-gateway</module>
 		<module>parking-common</module>
 		<module>parking-finance</module>
+		<module>parking-carwash</module>
 	</modules>
 
 	<properties>

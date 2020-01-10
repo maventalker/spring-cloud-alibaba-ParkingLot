@@ -8,7 +8,7 @@
 
   <context id="mysqlTables" targetRuntime="MyBatis3">
     <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://localhost:3306/park_resource?useUnicode=true" userId="root"
+                        connectionURL="jdbc:mysql://localhost:3306/park_carwash?useUnicode=true" userId="root"
                         password="root">
                         <property name="useInformationSchema" value="true"/>
     </jdbcConnection>
@@ -17,25 +17,25 @@
       <property name="forceBigDecimals" value="false" />
     </javaTypeResolver>
 
-    <javaModelGenerator targetPackage="com.mall.parking.resource.entity" targetProject="src/test/java">
+    <javaModelGenerator targetPackage="com.mall.parking.carwash.api.entity" targetProject="src/test/java">
       <property name="enableSubPackages" value="true" />
       <property name="trimStrings" value="true" />
     </javaModelGenerator>
     <sqlMapGenerator targetPackage="mybatis.mapper"  targetProject="src/test/resources">
       <property name="enableSubPackages" value="true" />
     </sqlMapGenerator>
-    <javaClientGenerator type="XMLMAPPER" targetPackage="com.mall.parking.resource.mapper"  targetProject="src/test/java">
+    <javaClientGenerator type="XMLMAPPER" targetPackage="com.mall.parking.carwash.serv.mapper"  targetProject="src/test/java">
       <property name="enableSubPackages" value="true" />
     </javaClientGenerator>
     
-     <table tableName="brake" domainObjectName="Brake">
+     <table tableName="car_wash" domainObjectName="CarWash">
     	<generatedKey column="id" sqlStatement="SELECT REPLACE(UUID(), '-', '')"/>
     </table>
-    <table tableName="stall" domainObjectName="Stall">
+    <!-- <table tableName="stall" domainObjectName="Stall">
     	<generatedKey column="id" sqlStatement="SELECT REPLACE(UUID(), '-', '')"/>
     </table>
     <table tableName="stall_parked" domainObjectName="StallParked">
     	<generatedKey column="id" sqlStatement="SELECT REPLACE(UUID(), '-', '')"/>
-    </table>
+    </table> -->
   </context>
 </generatorConfiguration>
