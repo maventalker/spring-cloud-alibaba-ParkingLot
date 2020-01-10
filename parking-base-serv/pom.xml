@@ -5,6 +5,10 @@
     <artifactId>parking-project</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <groupId>com.mall.parking.gateway</groupId>
-  <artifactId>parking-gateway</artifactId>
+  <artifactId>parking-base-serv</artifactId>
+  <packaging>pom</packaging>
+  <modules>
+  	<module>parking-admin</module>
+  	<module>parking-gateway</module>
+  </modules>
 </project>

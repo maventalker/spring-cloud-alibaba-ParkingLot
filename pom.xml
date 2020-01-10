@@ -7,16 +7,17 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<modules>
-		<module>parking-admin</module>
+
 		<module>parking-member</module>
 		<module>parking-message</module>
 		<module>parking-resource</module>
 		<module>parking-charging</module>
 		<module>parking-card</module>
-		<module>parking-gateway</module>
+
 		<module>parking-common</module>
 		<module>parking-finance</module>
 		<module>parking-carwash</module>
+		<module>parking-base-serv</module>
 	</modules>
 
 	<properties>
@@ -29,10 +30,16 @@
 
 		<nacos-config-spring-boot.version>0.2.1</nacos-config-spring-boot.version>
 		<mybatis.starter.version>2.1.1</mybatis.starter.version>
+		<spring.boot.admin.version>2.1.2</spring.boot.admin.version>
 	</properties>
 
 	<dependencyManagement>
 		<dependencies>
+			<dependency>
+				<groupId>de.codecentric</groupId>
+				<artifactId>spring-boot-admin-starter-client</artifactId>
+				<version>${spring.boot.admin.version}</version>
+			</dependency>
 			<dependency>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-dependencies</artifactId>

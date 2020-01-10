@@ -8,12 +8,20 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>parking-carwash-serv</artifactId>
-	
+
 	<properties>
 		<nacos.version>1.1.4</nacos.version>
 		<dubbo.starter.version>2.7.5</dubbo.starter.version>
 	</properties>
 	<dependencies>
+		<dependency>
+			<groupId>de.codecentric</groupId>
+			<artifactId>spring-boot-admin-starter-client</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.jolokia</groupId>
+			<artifactId>jolokia-core</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>com.mall.parking.root</groupId>
 			<artifactId>parking-carwash-api</artifactId>
@@ -41,9 +49,9 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 		<dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.mybatis.spring.boot</groupId>
 			<artifactId>mybatis-spring-boot-starter</artifactId>
@@ -52,7 +60,7 @@
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>

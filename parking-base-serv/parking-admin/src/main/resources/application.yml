@@ -1,0 +1,17 @@
+server: 
+  port: 10090
+
+management: 
+  endpoints: 
+    web: 
+      exposure: 
+        include: \\*
+  security: 
+    enabled: false
+  endpoint: 
+    health: 
+      show-details: ALWAYS
+
+spring: 
+  application: 
+    name: parking-admin

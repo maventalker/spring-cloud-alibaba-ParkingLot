@@ -11,6 +11,14 @@
 	<artifactId>parking-member</artifactId>
 
 	<dependencies>
+		<dependency>
+			<groupId>de.codecentric</groupId>
+			<artifactId>spring-boot-admin-starter-client</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.jolokia</groupId>
+			<artifactId>jolokia-core</artifactId>
+		</dependency>
 		<!-- nacos -->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
