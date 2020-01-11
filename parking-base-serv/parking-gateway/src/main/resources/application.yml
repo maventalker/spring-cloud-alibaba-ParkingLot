@@ -1,0 +1,98 @@
+server: 
+  port: 10091
+  
+management: 
+  endpoints: 
+    web: 
+      exposure: 
+        include: '*'
+#timeout time config
+hystrix: 
+  command: 
+    default: 
+      execution: 
+        isolation: 
+          thread: 
+            timeoutInMilliseconds: 5000
+
+#nacos config
+spring: 
+  application: 
+    name: gateway-service
+  main: 
+    allow-bean-definition-overriding: true
+  redis: 
+    database: 3
+    host: localhost
+    port: 16479
+    password: zxcvbnm,./ 
+  cloud: 
+    nacos: 
+      discovery: 
+        register-enabled: true
+        server-addr: 127.0.0.1:8848
+#      config: 
+#        server-addr: 127.0.0.1:8848
+    gateway: 
+      discovery:
+        locator:
+          enabled: true  #gateway开启服务注册和发现的功能，并且自动根据服务发现为每一个服务创建了一个router，这个router将以服务名开头的请求路径转发到对应的服务。
+          lowerCaseServiceId: true   #是将请求路径上的服务名配置为小写，比如以/service-hi/*的请求路径被路由转发到服务名为service-hi的服务上。
+          filters:
+            - StripPrefix=1
+      routes: 
+      #member子服务
+      - id: member-service
+        uri: lb://member-service
+        predicates: 
+        - Path= /member/**
+        filters: 
+        - StripPrefix=1
+      #card子服务
+      - id: card-service
+        uri: lb://card-service
+        predicates: 
+        - Path=/card/**
+        filters:
+        - StripPrefix=1
+        - name: Hystrix
+          args: 
+            name: fallbackcmd
+            fallbackUri: forward:/error/fallback
+        - name: Retry
+          args: 
+            retries: 3
+            statuses: 
+            - INTERNAL_SERVER_ERROR
+            - SERVICE_UNAVAILABLE
+            methods: 
+            - GET
+            - POST
+            exceptions: 
+            - com.mall.parking.common.exception.BusinessException
+        - name: RequestRateLimiter
+          args: 
+            redis-rate-limiter.replenishRate: 3 #允许用户每秒处理多少个请求
+            redis-rate-limiter.burstCapacity: 5 #令牌桶的容量，允许在一秒钟内完成的最大请求数
+            key-resolver: '#{@addrKeyResolver}' #SPEL表达式去的对应的bean
+      #resource子服务
+      - id: resource-service
+        uri: lb://resource-service
+        predicates: 
+        - Path=/resources/**
+        filters:
+        - StripPrefix=1
+      #计费子服务
+      - id: charging-service
+        uri: lb://charging-service
+        predicates: 
+        - Path=/charging/**
+        filters: 
+        - StripPrefix=1
+      #finance子服务
+      - id: finance-service
+        uri: lb://finance-service
+        predicates: 
+        - Path=/finance/**
+        filters: 
+        - StripPrefix=1
