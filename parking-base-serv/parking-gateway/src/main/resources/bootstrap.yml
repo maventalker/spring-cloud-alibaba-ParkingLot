@@ -1,0 +1,7 @@
+spring: 
+  cloud: 
+    nacos: 
+      config: 
+        server-addr: 127.0.0.1:8848
+#        shared-data-ids: parking-gateway-sentinel-nacos.yaml
+#        refreshable-dataids: parking-gateway-sentinel-nacos.yaml

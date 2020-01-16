@@ -27,12 +27,20 @@ spring:
     port: 16479
     password: zxcvbnm,./ 
   cloud: 
+    sentinel: 
+      transport: 
+        dashboard: 127.0.0.1:8080
+      datasource: 
+        ds: 
+          nacos: 
+            server-addr: 127.0.0.1:8848
+            dataId: parking-gateway-sentinel-nacos
+            groupId: DEFAULT_GROUP
+            rule-type: flow
     nacos: 
       discovery: 
         register-enabled: true
         server-addr: 127.0.0.1:8848
-#      config: 
-#        server-addr: 127.0.0.1:8848
     gateway: 
       discovery:
         locator:
@@ -70,11 +78,11 @@ spring:
             - POST
             exceptions: 
             - com.mall.parking.common.exception.BusinessException
-        - name: RequestRateLimiter
-          args: 
-            redis-rate-limiter.replenishRate: 3 #允许用户每秒处理多少个请求
-            redis-rate-limiter.burstCapacity: 5 #令牌桶的容量，允许在一秒钟内完成的最大请求数
-            key-resolver: '#{@addrKeyResolver}' #SPEL表达式去的对应的bean
+#        - name: RequestRateLimiter
+#          args: 
+#            redis-rate-limiter.replenishRate: 3 #允许用户每秒处理多少个请求
+#            redis-rate-limiter.burstCapacity: 5 #令牌桶的容量，允许在一秒钟内完成的最大请求数
+#            key-resolver: '#{@addrKeyResolver}' #SPEL表达式去的对应的bean
       #resource子服务
       - id: resource-service
         uri: lb://resource-service
