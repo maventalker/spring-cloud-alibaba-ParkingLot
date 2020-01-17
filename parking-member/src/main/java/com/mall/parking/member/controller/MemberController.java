@@ -82,4 +82,17 @@ public class MemberController {
 		result.setRespData(member);
 		return result;
 	}
+	
+	/**
+	 * @param memberId
+	 * @return
+	 */
+	@RequestMapping(value = "/logout", method = RequestMethod.POST)
+	public CommonResult<Member> logout(String memberId) throws BusinessException{
+		CommonResult<Member> result = new CommonResult<>();
+		//jwt并不会自动失效，需要配置redis一同使用，使用方法：
+		//退出时，将token置入缓存，在网关验证token时，同样需要到缓存中查找token，如果存在则证明token已主动失效，无法再使用
+		//网关验证时，如果token过期，则是token自动过期，直接响应去登陆
+		return result;
+	}
 }
