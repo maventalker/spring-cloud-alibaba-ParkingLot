@@ -23,8 +23,8 @@ public class Swagger2Config {
 
 	private ApiInfo apiInfo() {
 		return new ApiInfoBuilder()
-				.title("基于SpringBoot2+Swagger2的web api.")
-				.contact(new Contact("growithus", "微信公众号:歪脖贰点零", "andy.deqiang@gmail.com"))
+				.title("Member会员模块接口层（基于SpringBoot2+Swagger2）.")
+				.contact(new Contact("growithus", "https://backkoms.github.io/", "andy.deqiang@gmail.com"))
 				.version("1.0")
 				.description("").build();
 	}
