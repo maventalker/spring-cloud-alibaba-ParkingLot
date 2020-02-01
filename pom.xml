@@ -26,7 +26,7 @@
 		<spring-cloud.version>Greenwich.SR4</spring-cloud.version>
 		<spring-cloud-alibaba.version>2.1.0.RELEASE</spring-cloud-alibaba.version>
 		<fastjson.version>1.2.62</fastjson.version>
-		<swagger.version>2.6.1</swagger.version>
+		<swagger.version>2.8.0</swagger.version>
 
 		<nacos-config-spring-boot.version>0.2.1</nacos-config-spring-boot.version>
 		<mybatis.starter.version>2.1.1</mybatis.starter.version>

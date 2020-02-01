@@ -69,6 +69,16 @@
 			<artifactId>jjwt</artifactId>
 			<version>0.9.1</version>
 		</dependency>
+		
+				<!--swagger2 -->
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+		</dependency>
 
 	</dependencies>
 
@@ -77,6 +87,10 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

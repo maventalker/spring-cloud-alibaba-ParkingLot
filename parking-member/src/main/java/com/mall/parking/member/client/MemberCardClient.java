@@ -10,7 +10,7 @@ import com.mall.parking.common.exception.BusinessException;
 import com.mall.parking.member.client.fallback.MemberCardServiceFallback;
 
 /**
- * @author 公众号：歪脖贰点零 , See more at : https://xiaozhuanlan.com/msa-practice
+ * @author https://backkoms.github.io/
  *
  */
 @FeignClient(value = "card-service", fallback = MemberCardServiceFallback.class)

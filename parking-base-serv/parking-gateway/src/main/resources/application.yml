@@ -6,6 +6,8 @@ jwt:
   skip-urls: 
   - /member/bindMobile
   - /member/logout
+  - /card-service/v2/api-docs
+  - /resource-service/v2/api-docs
   
 management: 
   endpoint: 

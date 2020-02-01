@@ -12,7 +12,7 @@ import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
- * @author 公众号：歪脖贰点零 , See more at : https://xiaozhuanlan.com/msa-practice
+ * @author https://backkoms.github.io/
  *
  */
 @Component

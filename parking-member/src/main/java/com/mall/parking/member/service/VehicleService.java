@@ -4,7 +4,7 @@ import com.mall.parking.common.exception.BusinessException;
 import com.mall.parking.member.entity.Vehicle;
 
 /**
- * @author 公众号：歪脖贰点零 See more at : https://xiaozhuanlan.com/msa-practice
+ * @author https://backkoms.github.io/
  *
  */
 public interface VehicleService {

@@ -21,7 +21,7 @@ import io.jsonwebtoken.UnsupportedJwtException;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * @author 公众号：歪脖贰点零 , See more at : https://xiaozhuanlan.com/msa-practice
+ * @author https://backkoms.github.io/
  *
  */
 @Slf4j
@@ -101,7 +101,7 @@ public class JWTUtils {
 	public static void main(String[] args) {
 		try {
 			String key = "eyJqdGkiOiI1NGEzNmQ5MjhjYzE0MTY2YTk0MmQ5NTg4NGM2Y2JjMSIsImlhdCI6MTU3OTE2MDkwMiwic3ViIjoiMTIxMiIsImV4cCI6MTU3OTE2MDkyMn0";
-			String token = createJWT(UUID.randomUUID().toString().replace("-", ""), "1212", 200000, key);
+			String token = createJWT(UUID.randomUUID().toString().replace("-", ""), "1212", 20000, key);
 			System.out.println(token);
 			parseJWT(token, key);
 //            Thread.sleep(2500);

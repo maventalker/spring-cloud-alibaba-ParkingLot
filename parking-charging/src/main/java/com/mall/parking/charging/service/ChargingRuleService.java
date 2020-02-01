@@ -6,7 +6,7 @@ import com.mall.parking.charging.entity.ChargingRule;
 import com.mall.parking.common.exception.BusinessException;
 
 /**
- * @author 公众号：歪脖贰点零 , See more at : https://xiaozhuanlan.com/msa-practice
+ * @author https://backkoms.github.io/
  *
  */
 public interface ChargingRuleService {

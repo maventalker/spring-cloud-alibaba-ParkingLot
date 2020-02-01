@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 import com.mall.parking.common.bean.ParkingConstant;
 
 /**
- * @author 公众号：歪脖贰点零 , See more at : https://xiaozhuanlan.com/msa-practice
+ * @author https://backkoms.github.io/
  *
  */
 @Component
