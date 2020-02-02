@@ -1,13 +1,23 @@
 server: 
   port: 10091
+
+swagger: 
+  basic: 
+    enable: true
+    username: admin
+    password: admin
   
 jwt:
   token-key: eyJqdGkiOiI1NGEzNmQ5MjhjYzE0MTY2YTk0MmQ5NTg4NGM2Y2JjMSIsImlhdCI6MTU3OTE2MDkwMiwic3ViIjoiMTIxMiIsImV4cCI6MTU3OTE2MDkyMn0
   skip-urls: 
-  - /member/bindMobile
-  - /member/logout
+  - /member-service/member/bindMobile
+  - /member-service/member/logout
   - /card-service/v2/api-docs
   - /resource-service/v2/api-docs
+  - /member-service/v2/api-docs
+  - /member-service/test/hello
+  - /charging-service/v2/api-docs
+  - /finance-service/v2/api-docs
   
 management: 
   endpoint: 
