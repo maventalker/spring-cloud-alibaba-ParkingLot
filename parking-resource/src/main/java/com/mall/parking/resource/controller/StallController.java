@@ -1,5 +1,7 @@
 package com.mall.parking.resource.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -8,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.mall.parking.common.bean.CommonResult;
 import com.mall.parking.common.bean.ParkingConstant;
 import com.mall.parking.common.exception.BusinessException;
+import com.mall.parking.resource.entity.Stall;
 import com.mall.parking.resource.service.RedisService;
 import com.mall.parking.resource.service.StallService;
 
@@ -40,6 +43,14 @@ public class StallController {
 	public CommonResult<Integer> exist(String json) throws BusinessException {
 		CommonResult<Integer> commonResult = new CommonResult<>();
 		int rtn = stallService.exist(json);
+		commonResult.setRespData(rtn);
+		return commonResult;
+	}
+	
+	@PostMapping("/list")
+	public CommonResult<List<Stall>> list(String json) throws BusinessException {
+		CommonResult<List<Stall>> commonResult = new CommonResult<>();
+		List<Stall> rtn = stallService.list(json);
 		commonResult.setRespData(rtn);
 		return commonResult;
 	}

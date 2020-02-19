@@ -93,6 +93,7 @@
 	</dependencies>
 
 	<build>
+		<finalName>parking-card-service</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

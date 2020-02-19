@@ -1,5 +1,7 @@
 package com.mall.parking.resource.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -66,6 +68,13 @@ public class StallServiceImpl implements StallService {
 		//decrease available stall amount
 		redisService.increase(ParkingConstant.cache.currentAviableStallAmt);
 		return stallPardedMapper.updateByPrimaryKey(stallParked);
+	}
+
+	@Override
+	public List<Stall> list(String json) {
+		StallExample example = new StallExample();
+		List<Stall> list = stallMapper.selectByExample(example);
+		return list;
 	}
 
 }

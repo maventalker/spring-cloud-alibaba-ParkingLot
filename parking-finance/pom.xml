@@ -101,10 +101,18 @@
 		</dependency>
 	</dependencies>
 	<build>
+		<finalName>parking-finance-service</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
 				<configuration>
 					<source>1.8</source>
 					<target>1.8</target>
