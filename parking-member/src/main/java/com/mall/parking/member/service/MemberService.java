@@ -20,4 +20,6 @@ public interface MemberService {
 
 	Member getMember(String memberId) throws BusinessException;
 
+	int bindMobileUseRestTemplate(String json) throws BusinessException;
+
 }

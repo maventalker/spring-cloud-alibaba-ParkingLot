@@ -32,6 +32,7 @@ public class MemberController {
 	@Autowired
 	MemberCardClient memberCardClient;
 	
+	
 //	@Value("${onoff_bindmobile}")
 //	private boolean onoffBindmobile;
 //	
@@ -67,6 +68,15 @@ public class MemberController {
 		CommonResult<Integer> result = new CommonResult<>();
 		log.info("bind mobile param = " + json);
 		int rtn = memberService.bindMobile(json);
+		result.setRespData(rtn);
+		return result;
+	}
+	
+	@RequestMapping(value = "/bindMobileUseRestTemplate", method = RequestMethod.POST)
+	public CommonResult<Integer> bindMobileUseRestTemplate(String json) throws BusinessException{
+		CommonResult<Integer> result = new CommonResult<>();
+		log.info("bind mobile param = " + json);
+		int rtn = memberService.bindMobileUseRestTemplate(json);
 		result.setRespData(rtn);
 		return result;
 	}

@@ -8,8 +8,22 @@ import com.mall.parking.common.exception.BusinessException;
  */
 public interface MemberCardService {
 
+	/**
+	 * 绑定手机时，增加会员积分
+	 * 
+	 * @param json
+	 * @return
+	 * @throws BusinessException
+	 */
 	int addMemberCard(String json) throws BusinessException;
 
+	/**
+	 * 更新会员积分
+	 * 
+	 * @param json
+	 * @return
+	 * @throws BusinessException
+	 */
 	int updateMemberCard(String json) throws BusinessException;
 
 }
