@@ -1,0 +1,31 @@
+server: 
+  port: 10093
+
+management: 
+  endpoints: 
+    web: 
+      exposure: 
+        include: \\*
+  security: 
+    enabled: false
+  endpoint: 
+    health: 
+      show-details: ALWAYS
+
+spring: 
+  application: 
+    name: parking-hystrix-dashboard
+#nacos config
+  cloud: 
+    nacos: 
+      discovery: 
+        server-addr: 127.0.0.1:8848
+    
+#nacos client naming log
+logging: 
+  level: 
+   com: 
+     alibaba: 
+       nacos: 
+         client: 
+           naming: error

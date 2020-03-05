@@ -10,5 +10,6 @@
   <modules>
   	<module>parking-admin</module>
   	<module>parking-gateway</module>
+  	<module>parking-hystrix-dashboard</module>
   </modules>
 </project>
