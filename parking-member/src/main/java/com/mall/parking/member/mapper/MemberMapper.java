@@ -5,7 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
-import com.mall.parking.member.entity.Member;
+import com.mall.parking.common.entity.Member;
 import com.mall.parking.member.entity.MemberExample;
 
 @Mapper

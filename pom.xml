@@ -18,6 +18,7 @@
 		<module>parking-finance</module>
 		<module>parking-carwash</module>
 		<module>parking-base-serv</module>
+		<module>parking-schedule-job</module>
 	</modules>
 
 	<properties>

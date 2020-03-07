@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mall.parking.common.bean.CommonResult;
+import com.mall.parking.common.entity.Member;
 import com.mall.parking.common.exception.BusinessException;
 import com.mall.parking.member.client.MemberCardClient;
-import com.mall.parking.member.entity.Member;
 import com.mall.parking.member.service.MemberService;
 
 import lombok.extern.slf4j.Slf4j;

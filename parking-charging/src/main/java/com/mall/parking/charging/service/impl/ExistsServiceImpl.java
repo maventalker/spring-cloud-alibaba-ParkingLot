@@ -105,7 +105,7 @@ public class ExistsServiceImpl implements ExistsService {
 		log.info("update parkingLot aviable stall amt = " +redisService.getkey(ParkingConstant.cache.currentAviableStallAmt));
 		// send user message
 		Message message = new Message();
-		message.setMcontent("this is simple message.");
+		message.setMcontent("this is simple pay message.");
 		message.setMtype("pay");
 		source.output().send(MessageBuilder.withPayload(JSONObject.toJSONString(message)).build());
 		log.info("produce msg to apache rocketmq , parking-messge to consume the msg as a consumer...");

@@ -14,10 +14,10 @@ import org.springframework.web.client.RestTemplate;
 
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.nacos.common.util.UuidUtils;
+import com.mall.parking.common.entity.Member;
 import com.mall.parking.common.entity.MemberCard;
 import com.mall.parking.common.exception.BusinessException;
 import com.mall.parking.member.client.MemberCardClient;
-import com.mall.parking.member.entity.Member;
 import com.mall.parking.member.entity.MemberExample;
 import com.mall.parking.member.mapper.MemberMapper;
 import com.mall.parking.member.service.MemberService;
