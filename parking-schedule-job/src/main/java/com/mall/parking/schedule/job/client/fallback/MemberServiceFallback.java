@@ -1,7 +1,5 @@
 package com.mall.parking.schedule.job.client.fallback;
 
-import java.util.List;
-
 import org.springframework.stereotype.Component;
 
 import com.mall.parking.common.bean.CommonResult;
@@ -17,7 +15,7 @@ public class MemberServiceFallback implements MemberServiceClient {
 
 	@Override
 	public String list() throws BusinessException {
-		String result = "member-service service not available! ";
+		String result = null;
 		log.warn("member service not available! ");
 		return result;
 	}
@@ -26,6 +24,7 @@ public class MemberServiceFallback implements MemberServiceClient {
 	public CommonResult<Member> getMemberInfo(String memberId) {
 		CommonResult<Member> commonResult = new CommonResult<>("member-service getMemberInfo method not available!");
 		log.warn("member-service getMemberInfo method not available!");
+		commonResult.setRespData(null);
 		return commonResult;
 	}
 
