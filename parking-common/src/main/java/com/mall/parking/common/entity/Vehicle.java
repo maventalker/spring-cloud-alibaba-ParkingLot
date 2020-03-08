@@ -1,4 +1,4 @@
-package com.mall.parking.member.entity;
+package com.mall.parking.common.entity;
 
 import java.util.Date;
 

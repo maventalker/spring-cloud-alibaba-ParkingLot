@@ -11,6 +11,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.mall.parking.carwash.api.bean.CarWash;
 import com.mall.parking.carwash.api.itf.WashService;
 import com.mall.parking.common.bean.CommonResult;
+import com.mall.parking.common.entity.Vehicle;
 import com.mall.parking.common.exception.BusinessException;
 import com.mall.parking.member.service.VehicleService;
 
@@ -39,6 +40,16 @@ public class VehicleController {
 		log.debug("add vehicle = " + json);
 		CommonResult<Integer> result = new CommonResult<>();
 		int rtn = vehicleService.addVehicle(json);
+		result.setRespData(rtn);
+		return result;
+
+	}
+	
+	@RequestMapping(value = "/get", method = RequestMethod.POST)
+	public CommonResult<Vehicle> get(String memberId) throws BusinessException {
+		log.debug("add vehicle = " + memberId);
+		CommonResult<Vehicle> result = new CommonResult<>();
+		Vehicle rtn = vehicleService.getVehicle(memberId);
 		result.setRespData(rtn);
 		return result;
 

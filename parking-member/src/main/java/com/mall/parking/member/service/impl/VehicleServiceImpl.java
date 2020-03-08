@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSONObject;
+import com.mall.parking.common.entity.Vehicle;
 import com.mall.parking.common.exception.BusinessException;
-import com.mall.parking.member.entity.Vehicle;
 import com.mall.parking.member.entity.VehicleExample;
 import com.mall.parking.member.mapper.VehicleMapper;
 import com.mall.parking.member.service.VehicleService;

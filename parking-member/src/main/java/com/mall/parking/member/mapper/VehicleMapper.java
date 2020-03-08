@@ -1,9 +1,11 @@
 package com.mall.parking.member.mapper;
 
-import com.mall.parking.member.entity.Vehicle;
-import com.mall.parking.member.entity.VehicleExample;
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
+
+import com.mall.parking.common.entity.Vehicle;
+import com.mall.parking.member.entity.VehicleExample;
 
 public interface VehicleMapper {
     /**

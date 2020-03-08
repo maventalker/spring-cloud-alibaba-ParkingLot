@@ -26,5 +26,10 @@ public class MemberInfoVO {
 	 * 当前可用积分
 	 */
 	private String curQty;
+	
+	/**
+	 * 车牌号
+	 */
+	private String plateNo;
 
 }
