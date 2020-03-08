@@ -19,6 +19,8 @@
 		<module>parking-carwash</module>
 		<module>parking-base-serv</module>
 		<module>parking-schedule-job</module>
+		<module>parking-bff-minprogram-serv</module>
+		<module>parking-bff-native-serv</module>
 	</modules>
 
 	<properties>
