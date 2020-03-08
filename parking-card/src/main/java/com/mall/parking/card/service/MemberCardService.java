@@ -1,5 +1,6 @@
 package com.mall.parking.card.service;
 
+import com.mall.parking.common.entity.MemberCard;
 import com.mall.parking.common.exception.BusinessException;
 
 /**
@@ -25,5 +26,7 @@ public interface MemberCardService {
 	 * @throws BusinessException
 	 */
 	int updateMemberCard(String json) throws BusinessException;
+
+	MemberCard getMemberCard(String memberId);
 
 }

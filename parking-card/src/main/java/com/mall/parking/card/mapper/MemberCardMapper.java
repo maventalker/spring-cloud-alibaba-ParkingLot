@@ -1,9 +1,11 @@
 package com.mall.parking.card.mapper;
 
-import com.mall.parking.card.entity.MemberCard;
-import com.mall.parking.card.entity.MemberCardExample;
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
+
+import com.mall.parking.card.entity.MemberCardExample;
+import com.mall.parking.common.entity.MemberCard;
 
 public interface MemberCardMapper {
     /**

@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.mall.parking.card.service.MemberCardService;
 import com.mall.parking.common.bean.CommonResult;
+import com.mall.parking.common.entity.MemberCard;
 import com.mall.parking.common.exception.BusinessException;
 
 import lombok.extern.slf4j.Slf4j;
@@ -38,6 +39,15 @@ public class MemberCardController {
 		log.info(" begin add member card = " + json);
 		CommonResult<Integer> result = new CommonResult<>();
 		int rtn = cardService.updateMemberCard(json);
+		result.setRespData(rtn);
+		return result;
+	}
+	
+	@RequestMapping(value = "/get", method = RequestMethod.POST)
+	public CommonResult<MemberCard> get(String memberId) throws BusinessException {
+		log.info(" begin get member card = " + memberId);
+		CommonResult<MemberCard> result = new CommonResult<>();
+		MemberCard rtn = cardService.getMemberCard(memberId);
 		result.setRespData(rtn);
 		return result;
 	}
