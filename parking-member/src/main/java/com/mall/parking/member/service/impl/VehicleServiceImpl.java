@@ -33,13 +33,12 @@ public class VehicleServiceImpl implements VehicleService {
 	}
 
 	@Override
-	public Vehicle getVehicle(String vehicleNo) throws BusinessException{
+	public Vehicle getVehicle(String memberId) throws BusinessException{
 		VehicleExample example = new VehicleExample();
-		example.createCriteria().andPlateNoEqualTo(vehicleNo.trim());
+		example.createCriteria().andMemberIdEqualTo(memberId);
 		List<Vehicle> vehicles = vehicleMapper.selectByExample(example);
 		Vehicle vehicle = null;
 		if (CollectionUtils.isEmpty(vehicles)) {
-			log.info("VehicleNo = " + vehicleNo + " is temporary ! ");
 			return vehicle;
 		}else {
 			vehicle = vehicles.get(0);

@@ -14,39 +14,38 @@ import com.mall.parking.common.entity.MemberInfoVO;
 import com.mall.parking.common.entity.Vehicle;
 import com.mall.parking.common.exception.BusinessException;
 
-
 @RestController
 @RequestMapping("bff/nativeapp/member")
 public class APIMemberController {
 
 	@Autowired
 	MemberServiceClient memberServiceClient;
-	
+
 	@Autowired
 	MemberCardClient memberCardClient;
-	
+
 	@PostMapping("/get")
 	public CommonResult<MemberInfoVO> getMemberInfo(String memberId) throws BusinessException {
 		CommonResult<MemberInfoVO> commonResult = new CommonResult<>();
-		
-		//service aggregation
+
+		// service aggregation
 		CommonResult<Member> member = memberServiceClient.getMemberInfo(memberId);
 		CommonResult<Vehicle> vehicle = memberServiceClient.getVehicle(memberId);
-		CommonResult<MemberCard> card  = memberCardClient.get(memberId);
-		
+		CommonResult<MemberCard> card = memberCardClient.get(memberId);
+
 		MemberInfoVO vo = new MemberInfoVO();
-		if (null != member.getRespData()) {
+		if (null != member && null != member.getRespData()) {
 			vo.setId(member.getRespData().getId());
 			vo.setPhone(member.getRespData().getPhone());
 			vo.setFullName(member.getRespData().getFullName());
 			vo.setBirth(member.getRespData().getBirth());
 		}
-		
-		if (null != card.getRespData()) {
+
+		if (null != card && null != card.getRespData()) {
 			vo.setCurQty(card.getRespData().getCurQty());
 		}
-		
-		if (null != vehicle) {
+
+		if (null != vehicle && null != vehicle.getRespData()) {
 			vo.setPlateNo(vehicle.getRespData().getPlateNo());
 		}
 		commonResult.setRespData(vo);

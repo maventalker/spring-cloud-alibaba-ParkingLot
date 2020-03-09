@@ -9,7 +9,6 @@ import com.mall.parking.bff.nativeapp.client.fallback.MemberServiceFallback;
 import com.mall.parking.common.bean.CommonResult;
 import com.mall.parking.common.entity.Member;
 import com.mall.parking.common.entity.Vehicle;
-import com.mall.parking.common.exception.BusinessException;
 
 /**
  * @author https://backkoms.github.io/

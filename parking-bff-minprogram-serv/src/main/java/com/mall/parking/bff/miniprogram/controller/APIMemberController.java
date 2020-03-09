@@ -32,14 +32,14 @@ public class APIMemberController {
 		CommonResult<MemberCard> card  = memberCardClient.get(memberId);
 		
 		MemberInfoVO vo = new MemberInfoVO();
-		if (null != member.getRespData()) {
+		if (null !=member && null != member.getRespData()) {
 			vo.setId(member.getRespData().getId());
 			vo.setPhone(member.getRespData().getPhone());
 			vo.setFullName(member.getRespData().getFullName());
 			vo.setBirth(member.getRespData().getBirth());
 		}
 		
-		if (null != card.getRespData()) {
+		if (null != card && null != card.getRespData()) {
 			vo.setCurQty(card.getRespData().getCurQty());
 		}
 		commonResult.setRespData(vo);
