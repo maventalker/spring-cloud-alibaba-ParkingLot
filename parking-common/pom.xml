@@ -11,7 +11,7 @@
 	<artifactId>parking-common</artifactId>
 
 	<properties>
-		<poi.version>3.12</poi.version>
+		<poi.version>4.1.1</poi.version>
 	</properties>
 	<dependencies>
 		<dependency>
